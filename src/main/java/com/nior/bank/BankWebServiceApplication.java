@@ -8,6 +8,6 @@ public class BankWebServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BankWebServiceApplication.class, args);
+		System.out.println("Bank Web Service is running...");
 	}
-
 }

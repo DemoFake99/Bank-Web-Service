@@ -16,9 +16,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    // CRUD operations
     public Customer createCustomer(Customer customer) {
-        // Business logic: e.g., validation, checking for existing email
         return customerRepository.save(customer);
     }
 
@@ -30,9 +28,7 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    // More complex logic: e.g., update customer details
     public Customer updateCustomer(Customer customer) {
-        // Find existing customer, check data, then save
         return customerRepository.save(customer);
     }
 }

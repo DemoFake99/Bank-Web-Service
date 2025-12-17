@@ -20,7 +20,6 @@ public class AccountService {
     }
 
     public Account createAccount(Account account) {
-        // Business logic: e.g., generate unique account number, initial deposit validation
         return accountRepository.save(account);
     }
 
@@ -32,13 +31,6 @@ public class AccountService {
         return accountRepository.findByCustomerId(customerId);
     }
 
-    /**
-     * Handles the funds transfer between two accounts.
-     * @param sourceAccountNumber Account to debit
-     * @param targetAccountNumber Account to credit
-     * @param amount The amount to transfer
-     */
-    @Transactional // Ensures atomicity: BOTH operations must succeed or BOTH fail
     public void transferFunds(String sourceAccountNumber, String targetAccountNumber, BigDecimal amount) {
         Account sourceAccount = accountRepository.findByAccountNumber(sourceAccountNumber);
         Account targetAccount = accountRepository.findByAccountNumber(targetAccountNumber);
@@ -51,14 +43,10 @@ public class AccountService {
             throw new IllegalStateException("Insufficient funds in the source account.");
         }
 
-        // 1. Debit the source account
         sourceAccount.setBalance(sourceAccount.getBalance().subtract(amount));
         accountRepository.save(sourceAccount);
 
-        // 2. Credit the target account
         targetAccount.setBalance(targetAccount.getBalance().add(amount));
         accountRepository.save(targetAccount);
-
-        // A separate Transaction model/logic would normally record this for history
     }
 }

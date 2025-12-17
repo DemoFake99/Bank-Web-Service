@@ -1,5 +1,6 @@
-package com.nior.bankController;
+package com.nior.bank.Controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,9 +16,9 @@ import com.nior.bank.Service.CustomerService;
 
 @RestController
 @RequestMapping("/api/customers")
-@CrossOrigin(origins = "*")
 public class CustomerController {
 
+    @Autowired
     private final CustomerService customerService;
 
     public CustomerController(CustomerService customerService) {

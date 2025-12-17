@@ -1,8 +1,9 @@
-package com.nior.bankController;
+package com.nior.bank.Controller;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import com.nior.bank.Service.AccountService;
 @RequestMapping("/api/accounts")
 public class AccountController {
 
+    @Autowired
     private final AccountService accountService;
 
     public AccountController(AccountService accountService) {
@@ -41,9 +43,8 @@ public class AccountController {
     @PostMapping("/transfer")
     public ResponseEntity<String> transferFunds(@RequestBody Map<String, Object> request) {
         try {
-            String source = (String) request.get("sourceAccountNumber");
-            String target = (String) request.get("targetAccountNumber");
-            // Important: Safely cast or convert the amount from the JSON payload
+            String source = (String) request.get("source_account_number");
+            String target = (String) request.get("target_account_number");
             BigDecimal amount = new BigDecimal(request.get("amount").toString());
 
             accountService.transferFunds(source, target, amount);

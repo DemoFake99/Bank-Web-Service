@@ -30,4 +30,8 @@ public class Customer {
 
     @JsonProperty("address")
     private String address;
+    
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
 }

@@ -10,25 +10,29 @@ import com.nior.bank.Repository.CustomerRepository;
 @Service
 public class CustomerService {
 
-    private final CustomerRepository customerRepository;
+	private final CustomerRepository customerRepository;
 
-    public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
+	public CustomerService(CustomerRepository customerRepository) {
+		this.customerRepository = customerRepository;
+	}
 
-    public Customer createCustomer(Customer customer) {
-        return customerRepository.save(customer);
-    }
+	public Customer createCustomer(Customer customer) {
+		return customerRepository.save(customer);
+	}
 
-    public Optional<Customer> getCustomerById(Long id) {
-        return customerRepository.findById(id);
-    }
+	public Optional<Customer> getCustomerById(Long id) {
+		return customerRepository.findById(id);
+	}
 
-    public Iterable<Customer> getAllCustomers() {
-        return customerRepository.findAll();
-    }
+	public Iterable<Customer> getAllCustomers() {
+		return customerRepository.findAll();
+	}
 
-    public Customer updateCustomer(Customer customer) {
-        return customerRepository.save(customer);
-    }
+	public Customer updateCustomer(Customer customer) {
+		return customerRepository.save(customer);
+	}
+
+	public void deleteCustomer(Customer customer) {
+		customerRepository.delete(customer);
+	}
 }

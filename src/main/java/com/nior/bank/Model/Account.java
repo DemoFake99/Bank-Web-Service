@@ -20,4 +20,13 @@ public class Account {
     private BigDecimal balance;
     private String accountType;
     private boolean isActive;
+    
+	public BigDecimal getBalance() {
+	return balance ;
+	}
+
+	public void setBalance(BigDecimal subtract) {
+		this.balance = subtract;
+		
+	}
 }
